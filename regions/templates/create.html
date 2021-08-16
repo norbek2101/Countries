@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <form action="{% if c %}{% url "country_update" c.id %}{% else %}{% url "country_create" %}{% endif %}"
+              method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="id_name">Country name:</label>
+                <input id="id_name" type="text" name="name" value="{{ c.name }}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="id_capital">Capital:</label>
+                <input type="text" name="capital" value="{{ c.capital }}" id="id_capital" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="id_language">Language:</label>
+                <input type="text" name="language" value="{{ c.language }}" id="id_language"  class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="id_population">Population:</label>
+                <input type="text" name="population" value="{{ c.population }}" id="id_population"  class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="id_area">Area:</label>
+                <input type="text" name="area" value="{{ c.area }}" id="id_area"  class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Save</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="text-right">
+            <br>
+            <a href="{% url "country_create" %}" class="btn btn-success">Add</a>
+            <hr>
+        </div>
+        <div class="list-group">
+            {% for c in country %}
+                <div class="list-group-item d-flex align-items-center">
+                    <div>
+                        <h4>Name: {{ c.name }}</h4>
+                        <p><b>Capital:</b> {{ c.capital }}</p>
+                        <p><b>Language:</b> {{ c.language }}</p>
+                        <p><b>Population:</b> {{ c.population }}</p>
+                        <p><b>Area:</b> {{ c.area }}</p>
+                    </div>
+                    <div class="ml-auto">
+                        <a href="{% url "country_update" c.id %}" class="btn btn-warning">
+                            <i class="bi bi-pencil text-white"></i>
+                        </a>
+                        <a href="{% url "country_delete" c.id %}" class="btn btn-primary">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    </div>
+                </div>
+
+            {% empty %}
+                <div class="container text-center">
+                    <h4>Country is not defined!</h4>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
