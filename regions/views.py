@@ -11,12 +11,55 @@ def home(request):
 
 
 def asia(request):
-    continent = Continent.objects.get(name='asia')
+    continent = Continent.objects.get(id=1)
+    context = {'country': continent.country_set.all()}
+
+    return render(request, 'asia.html', context)
+
+
+def europe(request):
+    continent = Continent.objects.get(id=2)
     context = {
-       'asia': continent.country_set
+        'country': continent.country_set.all()
     }
 
-    return render(request, 'home.html', context)
+    return render(request, 'europe.html', context)
+
+
+def north_america(request):
+    continent = Continent.objects.get(id=4)
+    context = {
+        'country': continent.country_set.all()
+    }
+
+    return render(request, 'north-america.html', context)
+
+
+def south_america(request):
+    continent = Continent.objects.get(id=5)
+    context = {
+        'country': continent.country_set.all()
+    }
+
+    return render(request, 'south-america.html', context)
+
+
+def africa(request):
+    continent = Continent.objects.get(id=3)
+    context = {
+        'country': continent.country_set.all()
+    }
+
+    return render(request, 'africa.html', context)
+
+
+def oceania(request):
+    continent = Continent.objects.get(id=6)
+    context = {
+        'country': continent.country_set.all()
+    }
+
+    return render(request, 'oceania.html', context)
 
 
 def create(request):
